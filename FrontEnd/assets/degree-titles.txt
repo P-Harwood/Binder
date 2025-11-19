@@ -1,0 +1,335 @@
+Accounting and Business 
+Accounting and Finance 
+Acoustics and Music Technology 
+Anatomy and Development 
+Ancient History 
+Ancient History and Greek 
+Ancient History and Latin 
+Ancient Mediterranean Civilisations 
+Ancient and Medieval History 
+Animation 
+Applied Mathematics 
+Applied Sport Science 
+Arabic and Ancient Greek 
+Arabic and Business 
+Arabic and French 
+Arabic and History 
+Arabic and Persian 
+Arabic and Politics 
+Arabic and Social Anthropology 
+Arabic and Spanish 
+Arabic with Islamic and Middle Eastern Studies 
+Archaeology 
+Archaeology and Ancient History 
+Archaeology and Social Anthropology 
+Architectural History and Archaeology 
+Architectural History and Heritage 
+Architecture 
+Artificial Intelligence 
+Artificial Intelligence and Computer Science 
+Astrophysics 
+Biological Sciences 
+Biological Sciences with Management 
+Biomedical Informatics 
+Biomedical Sciences 
+Business Management 
+Business and Economics 
+Business and Law 
+Business with Decision Analytics 
+Business with Enterprise and Innovation 
+Business with Human Resource Management 
+Business with Marketing 
+Business with Strategic Economics 
+Celtic 
+Celtic and Archaeology 
+Celtic and English Language 
+Celtic and English Literature 
+Celtic and French 
+Celtic and Linguistics 
+Celtic and Scandinavian Studies 
+Celtic and Scottish History 
+Celtic and Scottish Literature 
+Chemical Engineering 
+Chemical Physics 
+Chemistry 
+Childhood Practice 
+Chinese 
+Chinese and French 
+Chinese and German 
+Chinese and History 
+Chinese and Linguistics 
+Chinese and Russian Studies 
+Chinese and Spanish 
+Civil Engineering 
+Classical Archaeology and Ancient History 
+Classical Archaeology and Greek 
+Classical Archaeology and Latin 
+Classical Studies 
+Classics 
+Classics and English Language 
+Classics and Linguistics 
+Cognitive Science 
+Computational Physics 
+Computer Science 
+Computer Science and Management Science 
+Computer Science and Mathematics 
+Computer Science and Physics 
+Divinity 
+Divinity - Graduate Entry 
+Divinity and Classics 
+Earth Science and Physical Geography 
+Earth Sciences 
+Ecological and Environmental Sciences 
+Ecological and Environmental Sciences with Management 
+Economics 
+Economics and Accounting 
+Economics and Mathematics 
+Economics and Politics 
+Economics and Statistics 
+Economics with Finance 
+Economics with Management Science 
+Electrical and Mechanical Engineering 
+Electronics and Computer Science 
+Electronics and Electrical Engineering 
+Engineering 
+English Language 
+English Language and Literature 
+English Literature 
+English Literature and Classics 
+English Literature and History 
+English and Scottish Literature 
+Environmental Geoscience 
+Fashion 
+Film and Television 
+Finance and Business 
+Fine Art 
+French 
+French and Business 
+French and Classics 
+French and English Language 
+French and English Literature 
+French and German 
+French and History 
+French and History of Art 
+French and Italian 
+French and Linguistics 
+French and Philosophy 
+French and Politics 
+French and Portuguese 
+French and Russian Studies 
+French and Scandinavian Studies 
+French and Social Policy 
+French and Spanish 
+Geography 
+Geophysics 
+Geophysics and Geology 
+Geophysics and Geology with Professional Placement 
+Geophysics and Meteorology 
+Geophysics and Meteorology with Professional Placement 
+Geophysics with Professional Placement 
+German 
+German and Business 
+German and Classics 
+German and English Language 
+German and English Literature 
+German and History 
+German and History of Art 
+German and Linguistics 
+German and Philosophy 
+German and Politics 
+German and Portuguese 
+German and Russian Studies 
+German and Scandinavian Studies 
+German and Social Policy 
+German and Spanish 
+Global Law 
+Government, Policy and Society 
+Government, Policy and Society with Quantitative Methods 
+Graphic Design 
+Greek Studies 
+Health in Social Science  
+History 
+History and Archaeology 
+History and Classics 
+History and Economics 
+History and History of Art 
+History and Politics 
+History and Scottish History 
+History of Art 
+History of Art and Architectural History 
+History of Art and Chinese Studies 
+History of Art and English Literature 
+History of Art and History of Music 
+History of Art and Scottish Literature 
+Illustration 
+Infectious Diseases 
+Informatics 
+Integrative Biomedical Sciences 
+Interdisciplinary Futures 
+Interior Design 
+International Business 
+International Business with Chinese 
+International Business with French 
+International Business with German 
+International Business with Italian 
+International Business with Japanese 
+International Business with Spanish 
+International Relations 
+International Relations with Quantitative Methods  
+Islamic Studies 
+Italian 
+Italian and Classics 
+Italian and English Language 
+Italian and English Literature 
+Italian and History 
+Italian and History of Art 
+Italian and Linguistics 
+Italian and Philosophy 
+Italian and Politics 
+Italian and Spanish 
+Japanese 
+Japanese and Linguistics 
+Jewellery and Silversmithing 
+Landscape Architecture 
+Latin Studies 
+Law 
+Law and Accountancy 
+Law and Business 
+Law and Celtic 
+Law and French 
+Law and German 
+Law and History 
+Law and International Relations 
+Law and Politics 
+Law and Social Anthropology 
+Law and Social Policy 
+Law and Sociology 
+Law and Spanish 
+Learning in Communities 
+Linguistics 
+Linguistics and English Language 
+Linguistics and Social Anthropology 
+Mathematical Physics 
+Mathematics 
+Mathematics and Business 
+Mathematics and Music 
+Mathematics and Physics 
+Mathematics and Statistics 
+Mechanical Engineering 
+Medical Sciences 
+Medicinal and Biological Chemistry 
+Medicine 
+Middle Eastern Studies 
+Music 
+Neuroscience 
+Nursing Studies 
+Oral Health Sciences 
+Performance Costume 
+Persian Studies 
+Persian and English Literature 
+Persian and Middle Eastern Studies 
+Persian and Social Anthropology 
+Pharmacology 
+Philosophy 
+Philosophy and Economics 
+Philosophy and English Language 
+Philosophy and English Literature 
+Philosophy and Greek 
+Philosophy and Linguistics 
+Philosophy and Mathematics 
+Philosophy and Politics 
+Philosophy and Psychology 
+Philosophy and Scottish Literature 
+Philosophy and Theology 
+Physical Education 
+Physics 
+Physics with Meteorology 
+Physics with a Year Abroad 
+Physiology 
+Politics 
+Politics with Quantitative Methods  
+Politics, Philosophy and Economics  
+Portuguese 
+Portuguese and English Language 
+Portuguese and English Literature 
+Portuguese and Linguistics 
+Portuguese and Philosophy 
+Portuguese and Scottish Literature 
+Primary Education with Gaelic 
+Product Design 
+Psychology 
+Psychology and Business 
+Psychology and Economics 
+Psychology and Linguistics 
+Religious Studies 
+Religious Studies and English Literature 
+Religious Studies and Scottish Literature 
+Reproductive Biology 
+Russian Studies 
+Russian Studies and Classics 
+Russian Studies and English Language 
+Russian Studies and English Literature 
+Russian Studies and History 
+Russian Studies and History of Art 
+Russian Studies and Linguistics 
+Russian Studies and Philosophy 
+Russian Studies and Politics 
+Russian Studies and Scandinavian Studies 
+Russian Studies and Social Policy 
+Russian Studies and Spanish 
+Scandinavian Studies 
+Scandinavian Studies and Classics 
+Scandinavian Studies and English Language 
+Scandinavian Studies and English Literature 
+Scandinavian Studies and History 
+Scandinavian Studies and Linguistics 
+Scandinavian Studies and Philosophy 
+Scandinavian Studies and Politics 
+Scandinavian Studies and Social Policy 
+Scandinavian Studies and Spanish 
+Scottish Ethnology 
+Scottish Ethnology and Archaeology 
+Scottish Ethnology and Celtic 
+Scottish Ethnology and English Language 
+Scottish Ethnology and English Literature 
+Scottish Ethnology and Scandinavian Studies 
+Scottish Ethnology and Scottish History 
+Scottish Literature 
+Scottish Literature and Classics 
+Scottish Literature and History 
+Scottish Literature and Scottish History 
+Scottish Studies 
+Social Anthropology 
+Social Anthropology and Politics 
+Social Anthropology and Social Policy 
+Social Anthropology with Development 
+Social Policy and Economics 
+Social Policy and Law 
+Social Policy and Politics 
+Social Policy and Sociology 
+Social Policy with Quantitative Methods  
+Social Work 
+Sociology 
+Sociology and Politics 
+Sociology and Psychology 
+Sociology and Social Anthropology 
+Sociology with Quantitative Methods  
+Software Engineering 
+Spanish 
+Spanish and Business 
+Spanish and Classics 
+Spanish and English Literature 
+Spanish and History 
+Spanish and History of Art 
+Spanish and Linguistics 
+Spanish and Philosophy 
+Spanish and Politics 
+Spanish and Portuguese 
+Sport Management 
+Structural Engineering with Architecture 
+Structural and Fire Safety Engineering 
+Sustainable Development 
+Textiles 
+Theology 
+Theoretical Physics 
+Veterinary Medicine 

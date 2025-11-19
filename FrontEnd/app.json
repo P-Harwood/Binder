@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Binder",
+    "slug": "Binder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "extra": {
+      "expoModules": [
+        "react-native-crypto",
+        "react-native-randombytes",
+        "cipher-base"
+      ],
+      "eas": {
+        "projectId": "07ff9550-010a-438c-81d5-1276069e1a0c"
+      }
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0c0032"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.binder",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+--- easy ---
+
+check for naming conventions, especially profileContent.js
+
+set primary/secondary/tertiary colour
+
+
+reword profile content
+
+Clean up random specific style files
+Do comments properly
+organise code, rewrite for clarity
+make profile content scrollview
+
+--- medium ---
+
+
+--- Hard ---
+security tokens sending traffic
+Ios sign in
+animation for rejected people
+Build + diagnose
+investigate linking

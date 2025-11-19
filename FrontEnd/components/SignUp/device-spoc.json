@@ -1,0 +1,11 @@
+{
+  "supportedAbis": ["arm64-v8a", "armeabi-v7a"],
+  "supportedLocales": ["en-UK"],
+  "screenDensity": 420,
+  "sdkVersion": 28,
+  "deviceFeatures": [
+    "android.hardware.camera",
+    "android.hardware.camera.any",
+    "android.software.gallery"
+  ]
+}

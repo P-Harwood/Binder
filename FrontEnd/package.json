@@ -1,0 +1,49 @@
+{
+  "name": "Binder",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.11",
+    "@react-native-google-signin/google-signin": "^10.0.1",
+    "@types/react": "~18.0.27",
+    "buffer": "^6.0.3",
+    "expo": "~48.0.10",
+    "expo-application": "~5.1.1",
+    "expo-auth-session": "^4.0.3",
+    "expo-file-system": "^15.2.2",
+    "expo-google-sign-in": "^11.0.0",
+    "expo-image-picker": "~14.1.1",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "expo-web-browser": "~12.1.1",
+    "hybrid-crypto-js": "^0.2.4",
+    "mime": "^3.0.0",
+    "node-forge": "^1.3.1",
+    "react": "18.2.0",
+    "react-native": "0.71.8",
+    "react-native-aes-crypto": "^2.1.1",
+    "react-native-crypto": "^2.2.0",
+    "react-native-dropdown-picker": "^5.4.6",
+    "react-native-fs": "^2.20.0",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-image-crop-picker": "^0.39.0",
+    "react-native-image-crop-tools": "^1.6.4",
+    "react-native-image-picker": "^5.3.1",
+    "react-native-randombytes": "^3.6.1",
+    "react-native-rsa": "^0.0.3",
+    "react-native-rsa-native": "^2.0.5",
+    "rn-fetch-blob": "^0.12.0",
+    "socket.io-client": "^4.6.1",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react-native": "^0.71.6"
+  },
+  "private": true
+}
