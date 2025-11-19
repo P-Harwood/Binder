@@ -42,14 +42,14 @@ Images are picked from the device gallery, sent to the backend, resized and stor
   - Photo carousel (tap left/right side of the image to switch).
   - Biography, modules and hobbies on the final “page”.
 - You can:
-  - **Highlight** a user (records your interest and can turn into a “match”).
-  - **Skip** a user (blocks or drops that interaction, depending on state).
+  - Highlight a user (records your interest and can turn into a “match”).
+  - Skip* a user (blocks or drops that interaction, depending on state).
 
 Matching is based on university, last seen user id and simple interaction flags (`match`, `block`, etc.).
 
 ### Messaging
 
-- Once you’ve matched with someone, they appear in **Messages**:
+- Once you’ve matched with someone, they appear in Messages:
   - Search by name.
   - Tap a conversation to open chat.
 - Chat view:
@@ -80,17 +80,12 @@ Matching is based on university, last seen user id and simple interaction flags 
 
 ### Backend
 
-- **Stack**: Node.js, Express, Socket.IO, PostgreSQL.
-- **Database access**:
-  - `pg` with a connection pool.
-  - Parameterised queries (`$1, $2, …`) instead of string interpolation.
-  - Schema/tables for users, conversations, messages, hobbies, modules, images, and auth keys.
-- **Features**:
-  - Google ID token verification (`google-auth-library`).
-  - Matching logic (send/confirm/block matches and track `lastmatch_id`).
-  - Profile fields (biography, hobbies, modules, “Currently Revising” flag).
-  - Image upload and retrieval using `multer` + `sharp`, with images stored on disk and paths saved in Postgres.
-- There’s some experimental RSA/AES code in place for encrypted channels, but it isn’t intergrated through the whole app . This was mostly an experiment.
+
+- Node.js, Express, Socket.IO, PostgreSQL (`pg`).
+- Parameterised queries (`$1, $2, …`) instead of string interpolation.
+- Google ID token verification with `google-auth-library`.
+- Matching logic (highlight / skip, stored as `match` / `block`).
+- Profile management and image upload with `multer` + `sharp`.
 
 ---
 
@@ -116,7 +111,7 @@ node server.mjs
     
 -   Serves static files (images) from `public/`.
     
--   The mobile app reads the base URL from `Config("url")`, this is in resources/config.js (e.g. `http://192.168.x.x:5000` on the same network).
+-   The mobile app reads the base URL from `Config("url")`, this is in resources/config.js e.g. `http://192.168.x.x:5000`.
     
 
 ### Mobile app
