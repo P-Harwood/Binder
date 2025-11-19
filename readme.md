@@ -50,7 +50,7 @@ Matching is based on university, last seen user id and simple interaction flags 
 ### Messaging
 
 - Once you’ve matched with someone, they appear in Messages:
-  - Search by name.
+  - Search by name/ filter the matches.
   - Tap a conversation to open chat.
 - Chat view:
   - Messages are stored on the server and also cached on the device using AsyncStorage.
@@ -99,9 +99,6 @@ From the backend/server folder:
 
 ```bash
 npm install
-
-# Make sure PostgreSQL is running and DATABASE_URL is set, e.g.
-# export DATABASE_URL=postgres://user:password@localhost:5432/binder
 
 node server.mjs
 
