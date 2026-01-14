@@ -13,6 +13,11 @@ import multer from 'multer';
 import crypto from 'crypto';
 
 import { RSA, Crypt } from 'hybrid-crypto-js';
+import {
+  SOCKET_EVENTS,
+  PROFILE_ENTRY_TYPES,
+  DEFAULT_REVISITING_STATUS,
+} from './constants.mjs';
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -53,12 +58,12 @@ const connectedUsers = new Map();
 io.on('connection', (socket) => {
   console.log('a user connected:', socket.id);
 
-  socket.on('join', () => {
+  socket.on(SOCKET_EVENTS.JOIN, () => {
     console.log('User joined with socket ID:', socket.id);
-    socket.emit('requestPublic');
+    socket.emit(SOCKET_EVENTS.REQUEST_PUBLIC);
   });
 
-  socket.emit('message', 'message');
+  socket.emit(SOCKET_EVENTS.MESSAGE, SOCKET_EVENTS.MESSAGE);
 
   socket.on('disconnect', () => {
     console.log('user disconnected:', socket.id);
@@ -70,12 +75,12 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('deleteListing', (listingDetails) => {
+  socket.on(SOCKET_EVENTS.DELETE_LISTING, (listingDetails) => {
     // currently unused
   });
 
   // RSA / AES handshake (hybrid-crypto-js)
-  socket.on('RequestRSA', () => {
+  socket.on(SOCKET_EVENTS.REQUEST_RSA, () => {
     try {
       const rsa = new RSA();
       rsa.generateKeyPair((keyPair) => {
@@ -83,14 +88,14 @@ io.on('connection', (socket) => {
         socket.privateKey = keyPair.privateKey;
         console.log('Public key generated for socket:', socket.id);
 
-        socket.emit('ServerRSA', socket.publicKey);
+        socket.emit(SOCKET_EVENTS.SERVER_RSA, socket.publicKey);
       });
     } catch (error) {
       console.log('Error generating RSA key pair:', error);
     }
   });
 
-  socket.on('ClientAESKey', (encryptedAESKey) => {
+  socket.on(SOCKET_EVENTS.CLIENT_AES_KEY, (encryptedAESKey) => {
     try {
       const crypt = new Crypt();
       console.log('Encrypted AES payload:', encryptedAESKey);
@@ -116,7 +121,7 @@ io.on('connection', (socket) => {
 
   /* ==== Matching / profile ==== */
 
-  socket.on('Give Matches', async (userDetails) => {
+  socket.on(SOCKET_EVENTS.GIVE_MATCHES, async (userDetails) => {
     try {
       const profile = await Api.returnProfile(userDetails['user_id']);
       const matches = await Api.getMatches(
@@ -135,11 +140,11 @@ io.on('connection', (socket) => {
 
         for (let j = 0; j < matchDetails.length; j++) {
           const entry = matchDetails[j];
-          if (entry.type === 'hobbys') {
+          if (entry.type === PROFILE_ENTRY_TYPES.HOBBIES) {
             user.hobbies.push(entry);
-          } else if (entry.type === 'modules') {
+          } else if (entry.type === PROFILE_ENTRY_TYPES.MODULES) {
             user.modules.push(entry);
-          } else if (entry.type === 'images') {
+          } else if (entry.type === PROFILE_ENTRY_TYPES.IMAGES) {
             user.images.push({
               id: entry.id,
               name: entry.name || entry.link,
@@ -155,14 +160,14 @@ io.on('connection', (socket) => {
       }
 
       console.log('New matches payload:', userArray);
-      socket.emit('New Matches', userArray);
+      socket.emit(SOCKET_EVENTS.NEW_MATCHES, userArray);
     } catch (error) {
       console.error('Give Matches error:', error);
-      socket.emit('New Matches', null);
+      socket.emit(SOCKET_EVENTS.NEW_MATCHES, null);
     }
   });
 
-  socket.on('Create User', async (userDetails) => {
+  socket.on(SOCKET_EVENTS.CREATE_USER, async (userDetails) => {
     try {
       const emailResult = await Api.checkEmail(userDetails['email']);
 
@@ -175,49 +180,49 @@ io.on('connection', (socket) => {
         const userIdNum = Number(newEmailResult['user_id']);
         connectedUsers.set(userIdNum, socket.id);
 
-        socket.emit('User Exists', newEmailResult, authKey);
+        socket.emit(SOCKET_EVENTS.USER_EXISTS, newEmailResult, authKey);
       }
     } catch (error) {
       console.error('Create User error:', error);
     }
   });
 
-  socket.on('Remove Hobbies', async (user_id, hobby_id) => {
+  socket.on(SOCKET_EVENTS.REMOVE_HOBBIES, async (user_id, hobby_id) => {
     await Api.removeHobbies(hobby_id);
     const hobbies = await Api.returnHobbies(user_id);
-    socket.emit('Give Hobbies', hobbies);
+    socket.emit(SOCKET_EVENTS.GIVE_HOBBIES, hobbies);
   });
 
-  socket.on('Remove Modules', async (user_id, module_id) => {
+  socket.on(SOCKET_EVENTS.REMOVE_MODULES, async (user_id, module_id) => {
     await Api.removeModules(module_id);
     const modules = await Api.returnModules(user_id);
-    socket.emit('Give Modules', modules);
+    socket.emit(SOCKET_EVENTS.GIVE_MODULES, modules);
   });
 
-  socket.on('Add Hobbies', async (user_id, hobby) => {
+  socket.on(SOCKET_EVENTS.ADD_HOBBIES, async (user_id, hobby) => {
     console.log('Add Hobby', user_id, hobby);
     await Api.addHobbies(user_id, hobby);
     const hobbies = await Api.returnHobbies(user_id);
-    socket.emit('Give Hobbies', hobbies);
+    socket.emit(SOCKET_EVENTS.GIVE_HOBBIES, hobbies);
   });
 
-  socket.on('Add Modules', async (user_id, module) => {
+  socket.on(SOCKET_EVENTS.ADD_MODULES, async (user_id, module) => {
     await Api.addModules(user_id, module);
     const modules = await Api.returnModules(user_id);
-    socket.emit('Give Modules', modules);
+    socket.emit(SOCKET_EVENTS.GIVE_MODULES, modules);
   });
 
-  socket.on('Remove Image', async (imageID) => {
+  socket.on(SOCKET_EVENTS.REMOVE_IMAGE, async (imageID) => {
     console.log('Removing image', imageID);
     try {
       await Api.removeImages(imageID);
-      socket.emit('Image Removed');
+      socket.emit(SOCKET_EVENTS.IMAGE_REMOVED);
     } catch (error) {
       console.log('Remove Image error:', error);
     }
   });
 
-  socket.on('Highlight User', async (senderID, matchID) => {
+  socket.on(SOCKET_EVENTS.HIGHLIGHT_USER, async (senderID, matchID) => {
     try {
       const isMatch = await Api.checkMatch(senderID, matchID);
 
@@ -234,7 +239,7 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('Skip User', async (senderID, matchID) => {
+  socket.on(SOCKET_EVENTS.SKIP_USER, async (senderID, matchID) => {
     try {
       const isMatch = await Api.checkMatch(senderID, matchID);
       if (isMatch) {
@@ -248,64 +253,70 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('Update Biography', async (user_id, biography) => {
+  socket.on(SOCKET_EVENTS.UPDATE_BIOGRAPHY, async (user_id, biography) => {
     console.log('Update biography', user_id, biography);
     await Api.updateBiography(user_id, biography);
     const updatedBiography = await Api.getBiography(user_id);
     console.log('Updated biography:', updatedBiography);
-    socket.emit('Give Biography', updatedBiography);
+    socket.emit(SOCKET_EVENTS.GIVE_BIOGRAPHY, updatedBiography);
   });
 
-  socket.on('Update Hobbies', async (user_id, hobby_id, hobby) => {
+  socket.on(SOCKET_EVENTS.UPDATE_HOBBIES, async (user_id, hobby_id, hobby) => {
     console.log('Update Hobbies', user_id, hobby_id, hobby);
     await Api.updateHobbies(hobby_id, hobby);
     const hobbies = await Api.returnHobbies(user_id);
-    socket.emit('Give Hobbies', hobbies);
+    socket.emit(SOCKET_EVENTS.GIVE_HOBBIES, hobbies);
   });
 
-  socket.on('Update Modules', async (user_id, module_id, module) => {
+  socket.on(SOCKET_EVENTS.UPDATE_MODULES, async (user_id, module_id, module) => {
     await Api.updateModules(module_id, module);
     const modules = await Api.returnModules(user_id);
-    socket.emit('Give Modules', modules);
+    socket.emit(SOCKET_EVENTS.GIVE_MODULES, modules);
   });
 
-  socket.on('Set Revising', async (user_id, revisingValue) => {
+  socket.on(SOCKET_EVENTS.SET_REVISING, async (user_id, revisingValue) => {
     console.log('Set Revising', revisingValue, user_id);
     await Api.updateUserRevising(user_id, revisingValue);
     const currentlyRevising = await Api.getUserRevising(user_id);
     console.log('Set Revising result:', currentlyRevising);
 
-    socket.emit('currently Revising', currentlyRevising?.currently_revising || 'Not Currently Revising');
+    socket.emit(
+      SOCKET_EVENTS.CURRENTLY_REVISING,
+      currentlyRevising?.currently_revising || DEFAULT_REVISITING_STATUS,
+    );
   });
 
-  socket.on('Get Revising', async (user_id) => {
+  socket.on(SOCKET_EVENTS.GET_REVISING, async (user_id) => {
     const currentlyRevising = await Api.getUserRevising(user_id);
     console.log('Get Revising', user_id, currentlyRevising);
-    socket.emit('currently Revising', currentlyRevising?.currently_revising || 'Not Currently Revising');
+    socket.emit(
+      SOCKET_EVENTS.CURRENTLY_REVISING,
+      currentlyRevising?.currently_revising || DEFAULT_REVISITING_STATUS,
+    );
   });
 
-  socket.on('Get Biography', async (user_id) => {
+  socket.on(SOCKET_EVENTS.GET_BIOGRAPHY, async (user_id) => {
     const biography = await Api.getBiography(user_id);
-    socket.emit('Give Biography', biography);
+    socket.emit(SOCKET_EVENTS.GIVE_BIOGRAPHY, biography);
   });
 
-  socket.on('Get Hobbies', async (user_id) => {
+  socket.on(SOCKET_EVENTS.GET_HOBBIES, async (user_id) => {
     const hobbies = await Api.returnHobbies(user_id);
-    socket.emit('Give Hobbies', hobbies);
+    socket.emit(SOCKET_EVENTS.GIVE_HOBBIES, hobbies);
   });
 
-  socket.on('Get Modules', async (user_id) => {
+  socket.on(SOCKET_EVENTS.GET_MODULES, async (user_id) => {
     const modules = await Api.returnModules(user_id);
-    socket.emit('Give Modules', modules);
+    socket.emit(SOCKET_EVENTS.GIVE_MODULES, modules);
   });
 
   // Messaging 
-  socket.on('checkConversation', async (conversationID, lastMessageID) => {
+  socket.on(SOCKET_EVENTS.CHECK_CONVERSATION, async (conversationID, lastMessageID) => {
     const newMessages = await Api.checkConversation(conversationID, lastMessageID);
-    socket.emit('New Messages', newMessages);
+    socket.emit(SOCKET_EVENTS.NEW_MESSAGES, newMessages);
   });
 
-  socket.on('sendMessage', async (msg, lastMessageID) => {
+  socket.on(SOCKET_EVENTS.SEND_MESSAGE, async (msg, lastMessageID) => {
     console.log('message:', msg);
 
     await Api.sendMessage(msg);
@@ -314,19 +325,19 @@ io.on('connection', (socket) => {
       msg['conversationID'],
       lastMessageID,
     );
-    socket.emit('New Messages', newMessages);
+    socket.emit(SOCKET_EVENTS.NEW_MESSAGES, newMessages);
 
     const recipientId = Number(msg.recipientId);
     const recipientSocketId = connectedUsers.get(recipientId);
 
     if (recipientSocketId) {
-      io.to(recipientSocketId).emit('New Messages', newMessages);
+      io.to(recipientSocketId).emit(SOCKET_EVENTS.NEW_MESSAGES, newMessages);
     }
   });
 
   //Google auth and Login functions
 
-  socket.on('checkEmail', async (token, clientID) => {
+  socket.on(SOCKET_EVENTS.CHECK_EMAIL, async (token, clientID) => {
     const client = new OAuth2Client(clientID);
     try {
       const ticket = await client.verifyIdToken({
@@ -349,10 +360,10 @@ io.on('connection', (socket) => {
         const userIdNum = Number(emailResult['user_id']);
         connectedUsers.set(userIdNum, socket.id);
 
-        socket.emit('User Exists', emailResult, authKey);
+        socket.emit(SOCKET_EVENTS.USER_EXISTS, emailResult, authKey);
       } else {
         console.log('User does not exist for email');
-        socket.emit('User Not Exist', {
+        socket.emit(SOCKET_EVENTS.USER_NOT_EXIST, {
           firstName: payload.given_name,
           lastName: payload.family_name,
           email: payload.email,
@@ -363,7 +374,7 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('test Auth', async (userID, authKey) => {
+  socket.on(SOCKET_EVENTS.TEST_AUTH, async (userID, authKey) => {
     console.log('testing auth key');
     const intUserID = parseInt(userID, 10);
     console.log('Received test auth', intUserID, authKey);
@@ -378,7 +389,7 @@ io.on('connection', (socket) => {
       const userIdNum = Number(user['user_id']);
       connectedUsers.set(userIdNum, socket.id);
 
-      socket.emit('User Exists', user, authKey);
+      socket.emit(SOCKET_EVENTS.USER_EXISTS, user, authKey);
     }
   });
 });
